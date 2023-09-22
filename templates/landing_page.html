@@ -1,0 +1,23 @@
+{% extends "header.html" %}
+{% block style%}
+<link rel="stylesheet" href="{{ url_for("static", filename ='css/landing-page.css')}}">
+{% endblock%}
+
+{% block content %}
+
+    <div class="video-container">
+        <video autoplay muted loop id="video-bg">
+            <source src="{{ url_for('static', filename="videos/containerVid.mp4")}}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="text-overlay">
+            <h1>Aero Quest</h1>
+            <p>Aero Quest is a prominent and innovative flight booking company that specializes in providing travelers with seamless and convenient solutions for planning and booking their air travel experiences. 
+                With a strong commitment to customer satisfaction and an extensive network of airline partnerships, Aero Quest offers a wide range of flight options to destinations around the world.</p>
+
+                <button type="submit">BOOK A FLIGHT</button>
+        </div>
+    </div>
+   
+   '
+{% endblock %}

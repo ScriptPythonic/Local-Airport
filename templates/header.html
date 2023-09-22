@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="icon" href="{{ url_for('static', filename='favico.png')}}">
+    
+    <style>
+      /* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style the navigation bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #80aaff; /* Background color for the navbar */
+    color: #fff; /* Text color for the navbar */
+    padding: 10px 20px; /* Padding for spacing */
+    height: 70px;
+}
+
+/* Style the company name and image */
+.company-name {
+    display: flex; /* Display the image and text side by side */
+    align-items: center; /* Vertically center the content */
+}
+
+.company-name img {
+    width: 70px; /* Adjust the width of the image as needed */
+    height: 60px; /* Maintain the aspect ratio of the image */
+    margin-right: 10px; /* Add spacing between the image and text */
+}
+
+.company-name-text {
+    font-size: 30px;
+}
+
+.toogle-nav-links{
+    width: 60px;
+    height: 35px;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    display: none;
+    border-radius: 10px;
+}
+
+/* Style the navigation links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Spacing between the links */
+}
+
+.nav-links li {
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff; /* Text color for the links */
+    font-size: 18px;
+}
+
+/* Style the links on hover */
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Style the dropdown container */
+.dropdown-container {
+    position: relative;
+    text-align: center;
+}
+
+/* Style the "Account" link and icon */
+.dropdown-toggle {
+    
+    font-size: 20px;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48;
+    font-size: 24px; /* Adjust the icon size */
+    margin-right: 5px; /* Add some spacing between the icon and text */
+}
+
+/* Style the links on hover */
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    list-style-type: none;
+    padding: 0;
+    top: 100%; /* Position below the parent element */
+    left: 0;
+    z-index: 500;
+}
+
+/* Style the dropdown links */
+.dropdown-content a {
+    color: #333;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color on hover */
+.dropdown-content a:hover {
+    background-color:  #80aaff;
+    color: #fff;
+}
+
+/* Show the dropdown when hovering over the container */
+.dropdown-container:hover .dropdown-content  {
+    display: block;
+}
+
+.destination-images{
+    display: flex;
+    flex-direction: row;
+    gap: 30px
+    ;
+    overflow: auto;
+}
+.destination-box img{
+    width: 200px;
+    height: 200px;
+}
+@media only screen and (max-width: 760px){
+    .nav-links{
+        display:none ;
+        flex-direction: column;
+        width: 50%;
+        height: auto;
+        z-index: 200;
+        position: absolute;
+        right: 0;
+        background-color: white;
+        color: #80aaff;
+        top: 70px;
+        text-align: center;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #80aaff; /* Text color for the links */
+        font-size: 18px;
+        width: 100%;
+        height: 35px;
+        border-bottom: 2px solid #80aaff;
+    }
+.dropdown-content {
+    width: 100%;
+    text-align: center;
+}
+
+.toogle-nav-links{
+    display: block;
+}
+
+.company-name-text {
+    font-size: 20px;
+}
+.company-name img {
+    display: none;
+}
+
+}
+
+
+
+          
+    </style>
+    {% block style%}  {% endblock %}
+    {% block scripts%} {% endblock %}
+    
+    <title>Aero Quest</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="company-name">
+            <img src="{{ url_for('static', filename='images/header.jpg')}}" alt="company-logo">
+            <div class="company-name-text">Aero Quest</div>
+        </div>
+        <button class="toogle-nav-links" id="toogle-nav-links">Menu</button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#">Flight</a></li>
+            <li><a href="#">Hotels</a></li>
+            <li><a href="#">Cars</a></li>
+            <li><a href="#">Deals</a></li>
+            <li><a href="#">Blog</a></li>
+            <li class="dropdown-container">
+                <span class="material-symbols-outlined">account_circle</span>
+                <a href="#" class="dropdown-toggle">Account</a>
+                <ul class="dropdown-content">
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Trips</a></li>
+                    {% block difference%} <li><a href="/auth/login">Log In</a></li> {% endblock %}
+                </ul>
+            </li>
+        </ul>
+    </nav>
+   <main>
+        {% block content %} {% endblock %}
+    </main>
+    <div class="footer">
+        <div class="destination">
+            <h2>TOP DESTINATON</h2>
+            <div class="destination-images">
+                <div class="destination-box">
+                    
+                <img src="{{ url_for('static', filename='images/california.jfif')}}" alt="">
+                    <p>california city</p>
+                </div>
+    
+                <div class="destination-box">
+                <img src="{{ url_for('static', filename='images/california.jfif')}}" alt="">
+                <p>california city</p>
+                </div>
+    
+                <div class="destination-box">
+                <img src="{{ url_for('static', filename='images/california.jfif')}}" alt="">
+                <p>california city</p>
+                </div>
+    
+                <div class="destination-box">
+                <img src="{{ url_for('static', filename='images/california.jfif')}}" alt="">
+                <p>california city</p>
+                </div>
+    
+                <div class="destination-box">
+                <img src="{{ url_for('static', filename='images/california.jfif')}}" alt="">
+                <p>california city</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script >
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get references to the elements
+            const navLinks = document.getElementById('nav-links');
+            const toggleNav = document.getElementById('toogle-nav-links');
+          
+            // Function to toggle the visibility of navLinks
+            function toggleNavLinks() {
+              if (navLinks.style.display === 'none' || navLinks.style.display === '') {
+                navLinks.style.display = 'block';
+              } else {
+                navLinks.style.display = 'none';
+              }
+            }
+          
+            // Toggle navLinks when the toggleNav button is clicked
+            toggleNav.addEventListener('click', toggleNavLinks);
+          });          
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,30 @@
+{% extends "header.html" %}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for("static", filename ='css/login.css')}}">
+{% endblock %}
+{% block content %}
+
+    <div class="video-container">
+        <video autoplay muted loop id="video-bg">
+            <source src="{{ url_for('static', filename="videos/login.mp4")}}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="text-overlay">
+        <form method="POST">
+            <h1 style="color: white;">SIGN-UP</h1>
+            <br>
+            <input type="email" name="email" id="email">
+            <br>
+            <input type="password" name="password1" id="password" placeholder="Password">
+            <br>
+            <input type="password" name="password2" id="password" placeholder="Confirm Password ">
+            <button type="submit">SIGN-UP</button>
+            <br>
+            <br>
+            <a href="/auth/login">Login</a>
+         </form>
+        </div>
+    </div>
+   
+   '
+{% endblock %}

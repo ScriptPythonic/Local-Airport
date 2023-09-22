@@ -1,0 +1,47 @@
+<style>
+.destination-images{
+    display: flex;
+    flex-direction: row;
+    gap: 30px
+    ;
+    overflow: auto;
+}
+.destination-box img{
+    width: 200px;
+    height: 200px;
+  
+}
+</style>
+<div class="footer">
+    <div class="destination">
+        <h2>TOP DESTINATON</h2>
+        <div class="destination-images">
+            <div class="destination-box">
+                
+            <img src="{{ url_for('static', filename='images/california.jfif')}}" alt="">
+                <p>california city</p>
+            </div>
+
+            <div class="destination-box">
+            <img src="{{ url_for('static', filename='images/california.jfif')}}" alt="">
+            <p>california city</p>
+            </div>
+
+            <div class="destination-box">
+            <img src="{{ url_for('static', filename='images/california.jfif')}}" alt="">
+            <p>california city</p>
+            </div>
+
+            <div class="destination-box">
+            <img src="{{ url_for('static', filename='images/california.jfif')}}" alt="">
+            <p>california city</p>
+            </div>
+
+            <div class="destination-box">
+            <img src="{{ url_for('static', filename='images/california.jfif')}}" alt="">
+            <p>california city</p>
+            </div>
+            
+        </div>
+    </div>
+</div>
