@@ -7,3 +7,9 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
    
+    
+class Booking(db.models,UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    price = db.Column(db.integer(150))
+    
+   
